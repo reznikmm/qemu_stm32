@@ -1,0 +1,20 @@
+name = "uart_test"
+description = "Hello world via UART on unmodified Qemu"
+version = "0.1.0"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/reznikmm/qemu_stm32"
+tags = []
+
+executables = ["uart_test"]
+
+[[depends-on]]
+gnat_arm_elf = "*"
+
+[[actions]]
+type = "post-build"
+command = ["arm-eabi-objcopy", "-Obinary", "uart_test", "uart_test.bin"]
+directory = "bin"
